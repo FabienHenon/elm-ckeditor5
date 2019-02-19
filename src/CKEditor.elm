@@ -123,7 +123,7 @@ defaultConfig =
     defaultConfig
         |> withLanguage "fr"
 
-_See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-language) for more information_
+See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-language) for more information
 
 -}
 withLanguage : String -> Config -> Config
@@ -136,7 +136,7 @@ withLanguage language (Config config_) =
     defaultConfig
         |> withPlugins [ "Bold", "Italic" ]
 
-_See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-plugins) for more information_
+See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-plugins) for more information
 
 -}
 withPlugins : List String -> Config -> Config
@@ -149,7 +149,7 @@ withPlugins plugins (Config config_) =
     defaultConfig
         |> withPluginsRemoved [ "Bold", "Italic" ]
 
-_See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-removePlugins) for more information_
+See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-removePlugins) for more information
 
 -}
 withPluginsRemoved : List String -> Config -> Config
@@ -162,7 +162,7 @@ withPluginsRemoved removePlugins (Config config_) =
     defaultConfig
         |> withToolbar [ "bold", "italic" ]
 
-_See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-toolbar) for more information_
+See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-toolbar) for more information
 
 -}
 withToolbar : List String -> Config -> Config
