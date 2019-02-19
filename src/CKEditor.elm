@@ -95,7 +95,9 @@ necessarily fire on every single input action.
     type Msg
         = CKEditorChanged String
 
-    onCKEditorChange CKEditorChanged
+    view
+        [ onChange CKEditorChanged ]
+        []
 
 -}
 onChange : (String -> msg) -> Attribute msg
@@ -121,7 +123,7 @@ defaultConfig =
     defaultConfig
         |> withLanguage "fr"
 
-_See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-language)_
+_See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-language) for more information_
 
 -}
 withLanguage : String -> Config -> Config
@@ -134,7 +136,7 @@ withLanguage language (Config config_) =
     defaultConfig
         |> withPlugins [ "Bold", "Italic" ]
 
-_See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-plugins)_
+_See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-plugins) for more information_
 
 -}
 withPlugins : List String -> Config -> Config
@@ -147,7 +149,7 @@ withPlugins plugins (Config config_) =
     defaultConfig
         |> withPluginsRemoved [ "Bold", "Italic" ]
 
-_See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-removePlugins)_
+_See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-removePlugins) for more information_
 
 -}
 withPluginsRemoved : List String -> Config -> Config
@@ -160,7 +162,7 @@ withPluginsRemoved removePlugins (Config config_) =
     defaultConfig
         |> withToolbar [ "bold", "italic" ]
 
-_See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-toolbar)_
+_See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-toolbar) for more information_
 
 -}
 withToolbar : List String -> Config -> Config
