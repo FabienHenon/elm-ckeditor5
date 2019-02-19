@@ -54,11 +54,11 @@ type alias Config_ =
 
 {-| Renders a CKEditor instance
 
-view
-    [ config defaultConfig
-    , onCKEditorChange CKEditorChanged
-    ]
-    [ text "Initial text"]
+    view
+        [ config defaultConfig
+        , onCKEditorChange CKEditorChanged
+        ]
+        [ text "Initial text" ]
 
 -}
 view : List (Attribute msg) -> List (Html msg) -> Html msg
@@ -66,7 +66,7 @@ view =
     node "x-ckeditor"
 
 
-{-| Sets the registerd editor build to use
+{-| Sets the registered editor build to use
 
 _See [ckeditor5-webcomponent](https://github.com/FabienHenon/ckeditor5-webcomponent) for more information_
 
@@ -79,9 +79,9 @@ editor =
 {-| Add the specified configuration to the editor.
 This will reload the component
 
-view
-    [ config (defaultConfig |> withLanguage "fr") ]
-    []
+    view
+        [ config (defaultConfig |> withLanguage "fr") ]
+        []
 
 -}
 config : Config -> Attribute msg
@@ -92,10 +92,10 @@ config (Config config_) =
 {-| Event fired when the CKEditor content changed. This event will not
 necessarily fire on every single input action.
 
-type Msg
-    = CKEditorChanged String
+    type Msg
+        = CKEditorChanged String
 
-onCKEditorChange CKEditorChanged
+    onCKEditorChange CKEditorChanged
 
 -}
 onChange : (String -> msg) -> Attribute msg
@@ -118,8 +118,8 @@ defaultConfig =
 
 {-| Set the language to use in the configuration
 
-defaultConfig
-    |> withLanguage "fr"
+    defaultConfig
+        |> withLanguage "fr"
 
 _See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-language)_
 
@@ -131,8 +131,8 @@ withLanguage language (Config config_) =
 
 {-| Set the plugins to use in the configuration
 
-defaultConfig
-    |> withPlugins ["Bold", "Italic"]
+    defaultConfig
+        |> withPlugins [ "Bold", "Italic" ]
 
 _See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-plugins)_
 
@@ -144,8 +144,8 @@ withPlugins plugins (Config config_) =
 
 {-| Set the plugins that should not be loaded in the configuration
 
-defaultConfig
-    |> withPluginsRemoved ["Bold", "Italic"]
+    defaultConfig
+        |> withPluginsRemoved [ "Bold", "Italic" ]
 
 _See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-removePlugins)_
 
@@ -157,8 +157,8 @@ withPluginsRemoved removePlugins (Config config_) =
 
 {-| Set the toolbar to use in the configuration
 
-defaultConfig
-    |> withToolbar ["bold", "italic"]
+    defaultConfig
+        |> withToolbar [ "bold", "italic" ]
 
 _See [reference](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html#member-toolbar)_
 
@@ -170,8 +170,8 @@ withToolbar toolbar (Config config_) =
 
 {-| Set any other configuration
 
-defaultConfig
-    |> withCustom "mediaEmbed" mediaEmbedEncoder
+    defaultConfig
+        |> withCustom "mediaEmbed" mediaEmbedEncoder
 
 **The name must be a valid configuration property name**
 
