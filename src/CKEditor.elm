@@ -2,7 +2,7 @@ module CKEditor exposing
     ( view
     , config, editor
     , onChange
-    , isContentEmpty
+    , isContentEmpty, trimContent
     , Config, defaultConfig, withCustom, withLanguage, withPlugins, withPluginsRemoved, withToolbar
     )
 
@@ -26,7 +26,7 @@ module CKEditor exposing
 
 # Helpers
 
-@docs isContentEmpty
+@docs isContentEmpty, trimContent
 
 
 # Config
@@ -202,8 +202,26 @@ isContentEmpty content =
         || (content |> String.trim |> String.toLower |> (==) "<p>&nbsp;</p>")
 
 
+{-| Trim the content, removing white spaces at the beginning and the end of the data.
+If the data is considered as empty (see [isContentEmpty](#isContentEmpty)) this function will
+return an empty string
+-}
+trimContent : String -> String
+trimContent =
+    String.trim >> clearEmptyContent
+
+
 
 -- INTERNAL
+
+
+clearEmptyContent : String -> String
+clearEmptyContent content =
+    if isContentEmpty content then
+        ""
+
+    else
+        content
 
 
 encodeConfig : Config_ -> String
