@@ -2,6 +2,7 @@ module CKEditor exposing
     ( view
     , config, editor
     , onChange
+    , isContentEmpty
     , Config, defaultConfig, withCustom, withLanguage, withPlugins, withPluginsRemoved, withToolbar
     )
 
@@ -21,6 +22,11 @@ module CKEditor exposing
 # Events
 
 @docs onChange
+
+
+# Helpers
+
+@docs isContentEmpty
 
 
 # Config
@@ -181,6 +187,19 @@ withToolbar toolbar (Config config_) =
 withCustom : String -> Value -> Config -> Config
 withCustom name value (Config config_) =
     Config { config_ | custom = Dict.insert name value config_.custom }
+
+
+{-| Check if the content you received from the editor is empty.
+
+Such a check can be necessary because when you empty the editor the final data
+still contains `<p>&nbsp;</p>`.
+This function checks if the trimmed content is empty or is equal to `<p>&nbsp;</p>`
+
+-}
+isContentEmpty : String -> Bool
+isContentEmpty content =
+    (content |> String.trim |> String.isEmpty)
+        || (content |> String.trim |> String.toLower |> (==) "<p>&nbsp;</p>")
 
 
 
