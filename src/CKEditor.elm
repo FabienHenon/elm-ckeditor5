@@ -1,6 +1,6 @@
 module CKEditor exposing
     ( view
-    , config, editor
+    , config, editor, content
     , onChange
     , isContentEmpty, trimContent
     , Config, defaultConfig, withCustom, withLanguage, withPlugins, withPluginsRemoved, withToolbar
@@ -16,7 +16,7 @@ module CKEditor exposing
 
 # Attributes
 
-@docs config, editor
+@docs config, editor, content
 
 
 # Events
@@ -80,6 +80,16 @@ _See [ckeditor5-webcomponent](https://github.com/FabienHenon/ckeditor5-webcompon
 editor : String -> Attribute msg
 editor =
     attribute "editor"
+
+
+{-| Sets the content of the editor
+
+_See [ckeditor5-webcomponent](https://github.com/FabienHenon/ckeditor5-webcomponent) for more information_
+
+-}
+content : String -> Attribute msg
+content =
+    attribute "content"
 
 
 {-| Add the specified configuration to the editor.
@@ -197,9 +207,9 @@ This function checks if the trimmed content is empty or is equal to `<p>&nbsp;</
 
 -}
 isContentEmpty : String -> Bool
-isContentEmpty content =
-    (content |> String.trim |> String.isEmpty)
-        || (content |> String.trim |> String.toLower |> (==) "<p>&nbsp;</p>")
+isContentEmpty content_ =
+    (content_ |> String.trim |> String.isEmpty)
+        || (content_ |> String.trim |> String.toLower |> (==) "<p>&nbsp;</p>")
 
 
 {-| Trim the content, removing white spaces at the beginning and the end of the data.
@@ -216,12 +226,12 @@ trimContent =
 
 
 clearEmptyContent : String -> String
-clearEmptyContent content =
-    if isContentEmpty content then
+clearEmptyContent content_ =
+    if isContentEmpty content_ then
         ""
 
     else
-        content
+        content_
 
 
 encodeConfig : Config_ -> String
