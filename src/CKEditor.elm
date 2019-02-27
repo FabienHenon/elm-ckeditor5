@@ -1,6 +1,6 @@
 module CKEditor exposing
     ( view
-    , config, editor, content
+    , config, editor, content, targetId
     , onChange
     , isContentEmpty, trimContent
     , Config, defaultConfig, withCustom, withLanguage, withPlugins, withPluginsRemoved, withToolbar
@@ -16,7 +16,7 @@ module CKEditor exposing
 
 # Attributes
 
-@docs config, editor, content
+@docs config, editor, content, targetId
 
 
 # Events
@@ -90,6 +90,16 @@ _See [ckeditor5-webcomponent](https://github.com/FabienHenon/ckeditor5-webcompon
 content : String -> Attribute msg
 content =
     attribute "content"
+
+
+{-| Sets the id of the element the editor will render for. (Itself by default)
+
+_See [ckeditor5-webcomponent](https://github.com/FabienHenon/ckeditor5-webcomponent) for more information_
+
+-}
+targetId : String -> Attribute msg
+targetId =
+    attribute "target-id"
 
 
 {-| Add the specified configuration to the editor.
